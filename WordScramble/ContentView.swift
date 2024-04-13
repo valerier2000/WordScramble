@@ -17,6 +17,7 @@ struct ContentView: View {
     @State private var showingError = false
     
     @State private var score = 0
+    @State private var totalScore = 0
     
     var body: some View {
         NavigationStack {
@@ -38,6 +39,10 @@ struct ContentView: View {
                 
                 Section {
                     Text("Score: \(score)")
+                }
+                
+                Section {
+                    Text("Total Score: \(totalScore)")
                 }
             }
             .navigationTitle(rootWord)
@@ -87,6 +92,7 @@ struct ContentView: View {
         withAnimation {
             usedWords.insert(answer, at: 0)
             score += answer.count
+            totalScore += score
         }
         
         newWord = ""
